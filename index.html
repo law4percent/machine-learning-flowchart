@@ -63,17 +63,18 @@
         }
 
         .title {
-            font-size: 24px;
+            font-size: clamp(18px, 4vw, 24px);
             font-weight: 700;
             background: linear-gradient(135deg, #00d4ff, #ff006e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 8px;
+            line-height: 1.2;
         }
 
         .subtitle {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             font-weight: 400;
         }
 
@@ -95,13 +96,14 @@
             position: relative;
         }
 
-        /* Mini flowchart nodes */
+        /* Responsive flowchart nodes */
         .flowchart-node {
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            will-change: transform;
         }
 
         .flowchart-node::before {
@@ -116,60 +118,63 @@
         .start-end {
             background: linear-gradient(135deg, #10ac84, #00d2d3);
             color: white;
-            padding: 12px 20px;
+            padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
             border-radius: 25px;
             font-weight: 600;
             text-align: center;
-            min-width: 160px;
-            font-size: 12px;
+            min-width: clamp(120px, 25vw, 160px);
+            font-size: clamp(10px, 2.2vw, 12px);
             box-shadow: 0 8px 25px rgba(16, 172, 132, 0.3);
+            line-height: 1.2;
         }
 
         .process {
             background: linear-gradient(135deg, #3742fa, #5352ed);
             color: white;
-            padding: 12px 18px;
+            padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 18px);
             border-radius: 12px;
             font-weight: 600;
             text-align: center;
-            min-width: 180px;
-            font-size: 11px;
+            min-width: clamp(140px, 30vw, 180px);
+            font-size: clamp(9px, 2vw, 11px);
             box-shadow: 0 8px 25px rgba(55, 66, 250, 0.3);
+            line-height: 1.3;
         }
 
         .decision {
             background: linear-gradient(135deg, #ff6348, #ff4757);
             color: white;
-            padding: 15px;
+            padding: clamp(8px, 2vw, 15px);
             transform: rotate(45deg);
-            width: 120px;
-            height: 120px;
+            width: clamp(80px, 15vw, 120px);
+            height: clamp(80px, 15vw, 120px);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             font-weight: 600;
             box-shadow: 0 8px 25px rgba(255, 99, 72, 0.3);
-            margin: 20px;
-            font-size: 10px;
+            margin: clamp(10px, 3vw, 20px);
+            font-size: clamp(8px, 1.8vw, 10px);
         }
 
         .decision-text {
             transform: rotate(-45deg);
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         .data {
             background: linear-gradient(135deg, #a55eea, #8854d0);
             color: white;
-            padding: 12px 18px;
+            padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 18px);
             border-radius: 8px;
             transform: skew(-10deg);
             font-weight: 600;
             text-align: center;
-            min-width: 140px;
-            font-size: 11px;
+            min-width: clamp(120px, 25vw, 140px);
+            font-size: clamp(9px, 2vw, 11px);
             box-shadow: 0 8px 25px rgba(165, 94, 234, 0.3);
+            line-height: 1.3;
         }
 
         .data-text {
@@ -179,69 +184,70 @@
         .output {
             background: linear-gradient(135deg, #ff3838, #e55039);
             color: white;
-            padding: 12px 18px;
+            padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 18px);
             border-radius: 12px;
             font-weight: 600;
             text-align: center;
-            min-width: 160px;
-            font-size: 11px;
+            min-width: clamp(120px, 25vw, 160px);
+            font-size: clamp(9px, 2vw, 11px);
             box-shadow: 0 8px 25px rgba(229, 80, 57, 0.3);
+            line-height: 1.3;
         }
 
-        /* Micro hover effects */
+        /* Responsive hover effects */
         .flowchart-node:hover {
-            transform: scale(1.08) translateY(-3px);
+            transform: scale(1.05) translateY(-2px);
             z-index: 10;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
         }
 
         .decision:hover {
-            transform: rotate(45deg) scale(1.08) translateY(-3px);
+            transform: rotate(45deg) scale(1.05) translateY(-2px);
         }
 
-        /* Micro step indicators */
+        /* Responsive step indicators */
         .step-number {
             position: absolute;
-            top: -8px;
-            left: -8px;
+            top: clamp(-6px, -1.5vw, -8px);
+            left: clamp(-6px, -1.5vw, -8px);
             background: linear-gradient(135deg, #2c2c54, #40407a);
             color: white;
-            width: 20px;
-            height: 20px;
+            width: clamp(16px, 3.5vw, 20px);
+            height: clamp(16px, 3.5vw, 20px);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 10px;
+            font-size: clamp(8px, 1.8vw, 10px);
             border: 2px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             z-index: 999;
             pointer-events: none;
         }
 
-        /* Micro arrows */
+        /* Responsive arrows */
         .arrow-down {
             width: 0;
             height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 15px solid rgba(255, 255, 255, 0.6);
-            margin: 8px 0;
+            border-left: clamp(6px, 1.5vw, 8px) solid transparent;
+            border-right: clamp(6px, 1.5vw, 8px) solid transparent;
+            border-top: clamp(12px, 2.5vw, 15px) solid rgba(255, 255, 255, 0.6);
+            margin: clamp(6px, 1.5vw, 8px) 0;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
 
         .arrow-right {
             width: 0;
             height: 0;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
-            border-left: 15px solid rgba(255, 255, 255, 0.6);
-            margin: 0 8px;
+            border-top: clamp(6px, 1.5vw, 8px) solid transparent;
+            border-bottom: clamp(6px, 1.5vw, 8px) solid transparent;
+            border-left: clamp(12px, 2.5vw, 15px) solid rgba(255, 255, 255, 0.6);
+            margin: 0 clamp(6px, 1.5vw, 8px);
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
 
-        /* Fixed feedback loop arrow */
+        /* Responsive feedback loop arrow */
         .no-iterate {
             position: relative;
             display: flex;
@@ -249,22 +255,21 @@
             align-items: center;
         }
 
-        /* Arrow that loops from NO Iterate back to Step 2 */
         .arrow-back {
             position: absolute;
-            left: 80px;   /* adjust horizontally until it aligns with Step 2 */
-            top: 540px;    /* place it just below NO Iterate */
+            left: clamp(140px, 12vw, 80px);
+            top: clamp(525px, 50vh, 540px);
             width: 0;
             height: 0;
-            z-index: 0;
+            z-index: -1;
         }
 
         .arrow-back::before {
             content: "";
             position: absolute;
-            width: 250px;   /* loop width */
-            height: 650px;  /* loop height */
-            border: 3px dashed #ff6b35;
+            width: clamp(150px, 35vw, 250px);
+            height: clamp(400px, 70vh, 650px);
+            border: clamp(2px, 0.5vw, 3px) dashed #ff6b35;
             border-right: none;
             border-radius: 20px 0 0 20px;
         }
@@ -272,37 +277,29 @@
         .arrow-back::after {
             content: "";
             position: absolute;
-            top: -8px;
-            left: 260px;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
-            border-left: 15px solid #ff6b35; /* arrowhead */
+            top: clamp(-6px, -1.5vw, -8px);
+            left: clamp(155px, 35vw, 260px);
+            border-top: clamp(8px, 2vw, 10px) solid transparent;
+            border-bottom: clamp(8px, 2vw, 10px) solid transparent;
+            border-left: clamp(12px, 2.5vw, 15px) solid #ff6b35;
         }
 
-        .flowchart-node,
-        .process,
-        .decision {
-            position: relative;
-            z-index: 1; /* keep nodes above */
-        }
-
-
-
-        /* Micro formula display */
+        /* Responsive formula display */
         .formula {
             background: rgba(0, 0, 0, 0.3);
-            padding: 4px 8px;
+            padding: clamp(2px, 0.8vw, 4px) clamp(4px, 1.5vw, 8px);
             border-radius: 4px;
             font-family: 'SF Mono', 'Monaco', monospace;
-            font-size: 9px;
-            margin-top: 4px;
+            font-size: clamp(7px, 1.6vw, 9px);
+            margin-top: clamp(2px, 0.8vw, 4px);
             color: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.2;
         }
 
         .details-panel {
             margin-top: 30px;
-            padding: 20px;
+            padding: clamp(15px, 3vw, 20px);
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             backdrop-filter: blur(20px);
@@ -328,36 +325,39 @@
         }
 
         .details-title {
-            font-size: 16px;
+            font-size: clamp(14px, 3vw, 16px);
             font-weight: 700;
             color: #00d4ff;
             margin-bottom: 12px;
+            line-height: 1.3;
         }
 
         .details-formula {
             background: linear-gradient(135deg, #2c2c54, #40407a);
             color: #ffffff;
-            padding: 12px;
+            padding: clamp(8px, 2vw, 12px);
             border-radius: 8px;
             font-family: 'SF Mono', monospace;
             margin: 12px 0;
-            font-size: 13px;
+            font-size: clamp(11px, 2.5vw, 13px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.3;
+            overflow-x: auto;
         }
 
         .details-explanation {
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.5;
             margin: 8px 0;
-            font-size: 13px;
+            font-size: clamp(11px, 2.5vw, 13px);
         }
 
         .mini-legend {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: clamp(10px, 2.5vw, 15px);
             margin-top: 30px;
-            padding: 20px;
+            padding: clamp(15px, 3vw, 20px);
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             backdrop-filter: blur(20px);
@@ -367,16 +367,17 @@
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 12px;
+            gap: clamp(6px, 1.5vw, 10px);
+            font-size: clamp(10px, 2.2vw, 12px);
             color: rgba(255, 255, 255, 0.8);
         }
 
         .legend-shape {
-            width: 30px;
-            height: 18px;
+            width: clamp(20px, 5vw, 30px);
+            height: clamp(12px, 3vw, 18px);
             border-radius: 4px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
         }
 
         .feedback-note {
@@ -384,54 +385,178 @@
             background: rgba(255, 107, 53, 0.1);
             border: 1px solid rgba(255, 107, 53, 0.3);
             border-radius: 10px;
-            padding: 15px;
+            padding: clamp(12px, 3vw, 15px);
             margin: 25px 0;
             color: #ff6b35;
             font-style: italic;
-            font-size: 12px;
+            font-size: clamp(10px, 2.2vw, 12px);
             backdrop-filter: blur(20px);
+            line-height: 1.4;
         }
 
-        /* Responsive design */
+        /* Mobile-specific optimizations */
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
             }
             
-            .title {
-                font-size: 20px;
+            .header {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .flowchart {
+                gap: 10px;
+                margin: 20px 0;
             }
             
-            .flowchart-node {
-                min-width: 120px !important;
-                padding: 10px 15px !important;
-                font-size: 10px !important;
-            }
-            
-            .decision {
-                width: 100px !important;
-                height: 100px !important;
-                font-size: 9px !important;
+            .flowchart-row {
+                gap: 15px;
             }
 
             .arrow-back {
-                width: 200px !important;
-                height: 200px !important;
-                border-radius: 0 0 0 100px !important;
-                left: -30px !important;
-                top: 60px !important;
+                display: none; /* Hide complex arrow on mobile */
+            }
+
+            /* Simplified mobile feedback */
+            .feedback-note {
+                font-size: 11px;
+                padding: 12px;
+                text-align: left;
+            }
+
+            .mini-legend {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 15px;
+            }
+
+            .details-panel {
+                margin-top: 20px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            /* Reduce particle count on mobile */
+            .particle:nth-child(n+8) {
+                display: none;
             }
         }
 
-        /* Performance optimization */
-        .flowchart-node {
+        /* Tablet optimizations */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 18px;
+            }
+
+            .arrow-back::before {
+                width: clamp(180px, 25vw, 220px);
+                height: clamp(450px, 60vh, 580px);
+            }
+
+            .arrow-back::after {
+                left: clamp(185px, 25vw, 230px);
+            }
+        }
+
+        /* Large screen optimizations */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1000px;
+            }
+
+            .flowchart-node:hover {
+                transform: scale(1.08) translateY(-3px);
+            }
+
+            .decision:hover {
+                transform: rotate(45deg) scale(1.08) translateY(-3px);
+            }
+        }
+
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .formula, .details-formula {
+                font-size: clamp(8px, 1.8vw, 10px);
+            }
+        }
+
+        /* Landscape mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .flowchart {
+                gap: 8px;
+            }
+            
+            .decision {
+                margin: 8px;
+            }
+
+            .header {
+                padding: 12px;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .flowchart-node {
+                padding: clamp(10px, 2.5vw, 15px);
+            }
+
+            .flowchart-node:active {
+                transform: scale(0.98);
+                transition: transform 0.1s;
+            }
+
+            /* Larger touch targets */
+            .step-number {
+                width: clamp(20px, 4vw, 24px);
+                height: clamp(20px, 4vw, 24px);
+            }
+        }
+
+        /* Performance optimization classes */
+        .flowchart-node,
+        .particle {
             will-change: transform;
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .particle {
+                animation: none;
+            }
+            
+            .flowchart-node {
+                transition: none;
+            }
+
+            .details-panel.active {
+                animation: none;
+            }
         }
 
         /* Dark mode enhancements */
         @media (prefers-color-scheme: dark) {
             .formula {
                 background: rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .background-particles,
+            .particle {
+                display: none;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            .flowchart-node {
+                box-shadow: none;
+                border: 2px solid #333;
             }
         }
     </style>
@@ -570,10 +695,14 @@
     </div>
 
     <script>
-        // Create floating particles
+        // Create floating particles (responsive count)
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 15;
+            const isMobile = window.innerWidth <= 768;
+            const particleCount = isMobile ? 8 : 15;
+
+            // Clear existing particles
+            particlesContainer.innerHTML = '';
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -645,7 +774,7 @@
             }
         };
 
-        // Enhanced interaction handlers
+        // Enhanced interaction handlers with responsive considerations
         document.querySelectorAll('.flowchart-node').forEach(node => {
             node.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -668,11 +797,15 @@
                         n.style.filter = 'brightness(0.7)';
                     });
                     
-                    // Highlight selected node
+                    // Highlight selected node with responsive scaling
+                    const isMobile = window.innerWidth <= 768;
+                    const scaleAmount = isMobile ? '1.08' : '1.15';
+                    const translateAmount = isMobile ? '-3px' : '-5px';
+                    
                     if (this.classList.contains('decision')) {
-                        this.style.transform = 'rotate(45deg) scale(1.15) translateY(-5px)';
+                        this.style.transform = `rotate(45deg) scale(${scaleAmount}) translateY(${translateAmount})`;
                     } else {
-                        this.style.transform = 'scale(1.15) translateY(-5px)';
+                        this.style.transform = `scale(${scaleAmount}) translateY(${translateAmount})`;
                     }
                     this.style.filter = 'brightness(1.2)';
                     
@@ -681,31 +814,299 @@
                 }
             });
 
-            // Add subtle hover sound effect (visual feedback)
-            node.addEventListener('mouseenter', function() {
-                this.style.boxShadow = this.style.boxShadow.replace('0.3)', '0.5)');
-            });
+            // Add subtle hover effects for desktop
+            if (window.matchMedia("(hover: hover)").matches) {
+                node.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = this.style.boxShadow.replace('0.3)', '0.5)');
+                });
 
-            node.addEventListener('mouseleave', function() {
-                this.style.boxShadow = this.style.boxShadow.replace('0.5)', '0.3)');
-            });
+                node.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = this.style.boxShadow.replace('0.5)', '0.3)');
+                });
+            }
         });
 
-        // Initialize particles
+        // Initialize particles with responsive count
         createParticles();
 
-        // Responsive particle adjustment
+        // Responsive particle and layout adjustment
+        let resizeTimeout;
         window.addEventListener('resize', () => {
-            const particles = document.querySelectorAll('.particle');
-            particles.forEach(particle => {
-                particle.style.left = Math.random() * window.innerWidth + 'px';
-            });
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                createParticles();
+                
+                // Adjust particle positions
+                const particles = document.querySelectorAll('.particle');
+                particles.forEach(particle => {
+                    particle.style.left = Math.random() * window.innerWidth + 'px';
+                });
+            }, 250);
         });
 
         // Performance optimization: reduce animations on low-power devices
         if (navigator.deviceMemory && navigator.deviceMemory < 4) {
             document.querySelectorAll('.particle').forEach(p => p.remove());
         }
+
+        // Touch device optimizations
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.flowchart-node').forEach(node => {
+                node.addEventListener('touchstart', function() {
+                    this.style.transform = this.style.transform.replace(/scale\([^)]*\)/, 'scale(0.98)');
+                }, { passive: true });
+
+                node.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        if (!this.style.filter.includes('brightness(1.2)')) {
+                            this.style.transform = this.style.transform.replace(/scale\([^)]*\)/, 'scale(1)');
+                        }
+                    }, 100);
+                }, { passive: true });
+            });
+        }
+
+        // Intersection Observer for fade-in animations (progressive enhancement)
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '50px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Initially hide elements for fade-in effect
+            document.querySelectorAll('.flowchart-node').forEach((node, index) => {
+                node.style.opacity = '0';
+                node.style.transform = 'translateY(20px)';
+                node.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(node);
+            });
+        }
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', (e) => {
+            const activeElement = document.activeElement;
+            const nodes = Array.from(document.querySelectorAll('.flowchart-node'));
+            const currentIndex = nodes.indexOf(activeElement);
+
+            if (e.key === 'ArrowDown' && currentIndex < nodes.length - 1) {
+                e.preventDefault();
+                nodes[currentIndex + 1].focus();
+            } else if (e.key === 'ArrowUp' && currentIndex > 0) {
+                e.preventDefault();
+                nodes[currentIndex - 1].focus();
+            } else if (e.key === 'Enter' && activeElement.classList.contains('flowchart-node')) {
+                activeElement.click();
+            }
+        });
+
+        // Add focus styles for keyboard navigation
+        const style = document.createElement('style');
+        style.textContent = `
+            .flowchart-node:focus {
+                outline: 3px solid #00d4ff;
+                outline-offset: 2px;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Prefers reduced motion support
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('.particle').forEach(p => p.remove());
+            
+            // Remove transitions for reduced motion
+            const reducedMotionStyle = document.createElement('style');
+            reducedMotionStyle.textContent = `
+                *, *::before, *::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            `;
+            document.head.appendChild(reducedMotionStyle);
+        }
+
+        // Auto-resize handler for orientation changes
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                createParticles();
+                // Reset any active states
+                document.querySelectorAll('.flowchart-node').forEach(node => {
+                    if (!node.style.filter.includes('brightness(1.2)')) {
+                        node.style.transform = node.classList.contains('decision') ? 'rotate(45deg)' : 'scale(1)';
+                    }
+                });
+            }, 300);
+        });
+
+        // Memory cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            // Clear all timeouts
+            clearTimeout(resizeTimeout);
+            
+            // Remove event listeners
+            document.querySelectorAll('.flowchart-node').forEach(node => {
+                node.removeEventListener('click', arguments.callee);
+                node.removeEventListener('mouseenter', arguments.callee);
+                node.removeEventListener('mouseleave', arguments.callee);
+                node.removeEventListener('touchstart', arguments.callee);
+                node.removeEventListener('touchend', arguments.callee);
+            });
+            
+            // Clear particles
+            const particlesContainer = document.getElementById('particles');
+            if (particlesContainer) {
+                particlesContainer.innerHTML = '';
+            }
+        });
+
+        // Enhanced error handling
+        window.addEventListener('error', (e) => {
+            console.warn('Flowchart error caught:', e.error);
+            // Graceful degradation - remove problematic animations
+            document.querySelectorAll('.particle').forEach(p => p.remove());
+        });
+
+        // Visibility change handler (pause animations when tab is hidden)
+        document.addEventListener('visibilitychange', () => {
+            const particles = document.querySelectorAll('.particle');
+            if (document.hidden) {
+                particles.forEach(p => p.style.animationPlayState = 'paused');
+            } else {
+                particles.forEach(p => p.style.animationPlayState = 'running');
+            }
+        });
+
+        // Connection quality detection (reduce effects on slow connections)
+        if ('connection' in navigator) {
+            const connection = navigator.connection;
+            if (connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')) {
+                document.querySelectorAll('.particle').forEach(p => p.remove());
+                
+                // Simplify animations for slow connections
+                const lowBandwidthStyle = document.createElement('style');
+                lowBandwidthStyle.textContent = `
+                    .flowchart-node {
+                        transition: transform 0.2s ease !important;
+                    }
+                    .details-panel.active {
+                        animation: none !important;
+                    }
+                `;
+                document.head.appendChild(lowBandwidthStyle);
+            }
+        }
+
+        // Battery API support (reduce animations on low battery)
+        if ('getBattery' in navigator) {
+            navigator.getBattery().then(battery => {
+                function updateBatteryOptimizations() {
+                    if (battery.level < 0.2 && !battery.charging) {
+                        // Low battery mode - reduce visual effects
+                        document.querySelectorAll('.particle').forEach(p => p.remove());
+                        
+                        const batteryStyle = document.createElement('style');
+                        batteryStyle.textContent = `
+                            .flowchart-node {
+                                transition: none !important;
+                                will-change: auto !important;
+                            }
+                            .particle {
+                                display: none !important;
+                            }
+                        `;
+                        batteryStyle.id = 'battery-optimization';
+                        document.head.appendChild(batteryStyle);
+                    } else if (battery.level > 0.5 || battery.charging) {
+                        // Normal battery - restore effects
+                        const batteryStyle = document.getElementById('battery-optimization');
+                        if (batteryStyle) {
+                            batteryStyle.remove();
+                        }
+                        if (document.querySelectorAll('.particle').length === 0) {
+                            createParticles();
+                        }
+                    }
+                }
+
+                battery.addEventListener('levelchange', updateBatteryOptimizations);
+                battery.addEventListener('chargingchange', updateBatteryOptimizations);
+                updateBatteryOptimizations();
+            }).catch(() => {
+                // Battery API not supported or permission denied
+                console.log('Battery API not available');
+            });
+        }
+
+        // Service Worker registration for offline support (progressive enhancement)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(() => {
+                    console.log('SW registered for offline support');
+                }).catch(() => {
+                    // Silent fail - not critical
+                });
+            });
+        }
+
+        // Final initialization check
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ensure all elements are properly initialized
+            const nodes = document.querySelectorAll('.flowchart-node');
+            if (nodes.length === 0) {
+                console.warn('No flowchart nodes found');
+                return;
+            }
+
+            // Add tabindex for keyboard navigation
+            nodes.forEach((node, index) => {
+                node.setAttribute('tabindex', '0');
+                node.setAttribute('role', 'button');
+                node.setAttribute('aria-label', `Flowchart step ${index + 1}`);
+            });
+
+            // Announce completion for screen readers
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.style.position = 'absolute';
+            announcement.style.left = '-10000px';
+            announcement.style.width = '1px';
+            announcement.style.height = '1px';
+            announcement.style.overflow = 'hidden';
+            announcement.textContent = 'Interactive machine learning flowchart loaded successfully';
+            document.body.appendChild(announcement);
+
+            setTimeout(() => {
+                announcement.remove();
+            }, 1000);
+        });
+
+        // Export functions for potential external use
+        window.FlowchartAPI = {
+            createParticles,
+            showDetails: (step) => {
+                const node = document.querySelector(`[data-step="${step}"]`);
+                if (node) node.click();
+            },
+            hideDetails: () => {
+                document.getElementById('details-panel').classList.remove('active');
+            },
+            resetHighlights: () => {
+                document.querySelectorAll('.flowchart-node').forEach(n => {
+                    n.style.transform = n.classList.contains('decision') ? 'rotate(45deg)' : 'scale(1)';
+                    n.style.filter = 'brightness(1)';
+                });
+            }
+        };
     </script>
 </body>
 </html>
