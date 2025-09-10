@@ -78,6 +78,81 @@
             font-weight: 400;
         }
 
+        /* NEW: Scope Note Section */
+        .scope-note {
+            margin-bottom: 30px;
+            padding: clamp(15px, 3vw, 20px);
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+            border-radius: 15px;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 193, 7, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.1);
+        }
+
+        .scope-title {
+            font-size: clamp(14px, 3vw, 16px);
+            font-weight: 700;
+            color: #ffc107;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scope-title::before {
+            content: "📌";
+            font-size: clamp(16px, 3.5vw, 18px);
+        }
+
+        .scope-content {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-size: clamp(11px, 2.5vw, 13px);
+        }
+
+        .scope-content strong {
+            color: #ffc107;
+            font-weight: 600;
+        }
+
+        .scope-paradigms {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .paradigm-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .paradigm-item.supervised {
+            border-left-color: #00d4ff;
+        }
+
+        .paradigm-item.unsupervised {
+            border-left-color: #ff006e;
+        }
+
+        .paradigm-item.reinforcement {
+            border-left-color: #00ff88;
+        }
+
+        .paradigm-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: clamp(10px, 2.2vw, 12px);
+        }
+
+        .paradigm-desc {
+            font-size: clamp(9px, 2vw, 11px);
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
         .flowchart {
             display: flex;
             flex-direction: column;
@@ -405,6 +480,16 @@
                 margin-bottom: 20px;
             }
 
+            .scope-note {
+                margin-bottom: 20px;
+                padding: 15px;
+            }
+
+            .scope-paradigms {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
             .flowchart {
                 gap: 10px;
                 margin: 20px 0;
@@ -415,10 +500,9 @@
             }
 
             .arrow-back {
-                display: none; /* Hide complex arrow on mobile */
+                display: none;
             }
 
-            /* Simplified mobile feedback */
             .feedback-note {
                 font-size: 11px;
                 padding: 12px;
@@ -437,7 +521,6 @@
                 border-radius: 10px;
             }
 
-            /* Reduce particle count on mobile */
             .particle:nth-child(n+8) {
                 display: none;
             }
@@ -474,46 +557,6 @@
             }
         }
 
-        /* High DPI displays */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .formula, .details-formula {
-                font-size: clamp(8px, 1.8vw, 10px);
-            }
-        }
-
-        /* Landscape mobile */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .flowchart {
-                gap: 8px;
-            }
-            
-            .decision {
-                margin: 8px;
-            }
-
-            .header {
-                padding: 12px;
-            }
-        }
-
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .flowchart-node {
-                padding: clamp(10px, 2.5vw, 15px);
-            }
-
-            .flowchart-node:active {
-                transform: scale(0.98);
-                transition: transform 0.1s;
-            }
-
-            /* Larger touch targets */
-            .step-number {
-                width: clamp(20px, 4vw, 24px);
-                height: clamp(20px, 4vw, 24px);
-            }
-        }
-
         /* Performance optimization classes */
         .flowchart-node,
         .particle {
@@ -532,31 +575,6 @@
 
             .details-panel.active {
                 animation: none;
-            }
-        }
-
-        /* Dark mode enhancements */
-        @media (prefers-color-scheme: dark) {
-            .formula {
-                background: rgba(0, 0, 0, 0.5);
-            }
-        }
-
-        /* Print styles */
-        @media print {
-            .background-particles,
-            .particle {
-                display: none;
-            }
-
-            body {
-                background: white;
-                color: black;
-            }
-
-            .flowchart-node {
-                box-shadow: none;
-                border: 2px solid #333;
             }
         }
     </style>
@@ -666,6 +684,31 @@
             • <strong>NO branch:</strong> If current model h is not optimal, try a different hypothesis h ∈ ℋ (goes back to Step 3)<br>
             • <strong>Learning Process:</strong> The algorithm explores different models in the hypothesis space ℋ until finding h* with minimum expected loss<br>
             • <strong>Key Insight:</strong> We don't go back to Step 2 (algorithm) - we stay within the same learning process but try different candidate models
+        </div>
+
+        <!-- NEW: Scope Note Section -->
+        <div class="scope-note">
+            <div class="scope-title">Note on Scope</div>
+            <div class="scope-content">
+                The mathematical formalization presented here is most accurate for <strong>supervised learning</strong>, where each input x∈𝒳 has a corresponding label y∈𝒴. This allows us to define the hypothesis space ℋ, data distribution 𝒟, and a loss function ℓ(h(x),y) that measures prediction error.
+                
+                <div class="scope-paradigms">
+                    <div class="paradigm-item supervised">
+                        <div class="paradigm-title">Supervised Learning</div>
+                        <div class="paradigm-desc">Labeled data (x,y) pairs; minimize prediction error ℓ(h(x),y)</div>
+                    </div>
+                    <div class="paradigm-item unsupervised">
+                        <div class="paradigm-title">Unsupervised Learning</div>
+                        <div class="paradigm-desc">No output space 𝒴; discover structure in 𝒳 (clustering, dimensionality reduction)</div>
+                    </div>
+                    <div class="paradigm-item reinforcement">
+                        <div class="paradigm-title">Reinforcement Learning</div>
+                        <div class="paradigm-desc">Environment-driven data; maximize expected cumulative reward</div>
+                    </div>
+                </div>
+                
+                Thus, while the supervised learning framework provides the clearest entry point, later paradigms generalize the same foundational idea: <strong>experience (E) guides the learner to improve performance (P) on a task (T)</strong>.
+            </div>
         </div>
 
         <!-- Mini Legend -->
