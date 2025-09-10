@@ -107,3 +107,11 @@ We can only evaluate models empirically on available data, but we actually care 
 This corrected view shows machine learning as **constrained optimization**: given a fixed algorithm and hypothesis space (Steps 1-2), we search through possible models (Steps 3-6) to find the one with minimum expected loss on real-world data.
 
 The process is fundamentally about making the best choice from a predetermined set of possibilities, rather than continuously redefining what's possible.
+
+### 📌 Note on Scope
+The mathematical formalization presented here is most accurate for supervised learning, where each input x∈X has a corresponding label 
+y∈Y. This allows us to define the hypothesis space 𝐻, data distribution 𝐷, and a loss function ℓ(h(x),y) that measures prediction error.
+
+For unsupervised learning, the output space 𝑌 is absent, and the objective instead focuses on discovering structure in 𝑋 (e.g., clustering, dimensionality reduction). In reinforcement learning, the data distribution comes from the environment, and the objective shifts from minimizing prediction error to maximizing expected cumulative reward.
+
+Thus, while the supervised learning framework provides the clearest entry point, later paradigms generalize the same foundational idea: experience (E) guides the learner to improve performance (P) on a task (T).
